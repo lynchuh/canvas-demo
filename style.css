@@ -1,60 +1,59 @@
-
+/*style reset*/
 body{
-  margin:0;
-  padding:0;
-  height: 100vh;
-  overflow: hidden;
+  margin:0;  padding:0;  height: 100vh;  overflow: hidden;}
 
-}
+/******/
 .icon {
-  width: 1em; height: 1em;
-  vertical-align: -0.15em;
-  fill: currentColor;
-  overflow: hidden;
-}
+  width: 2em; height: 2em; margin: 5px ; vertical-align: -0.15em;  fill: currentColor;  overflow: hidden; transition: all 0.1s;}
 #canvas{
-background: #fff;
-position: fixed;
-top: 0;
-left: 0;
-}
+background: #fff; position: fixed;top: 0;left: 0;}
 
-/*.actions{
-  position:fixed;
-  bottom:0;
-  left:0;
-}
+.usingstatus{position:fixed;  bottom:0;  left:0;  z-index: 1;}
+.penstyle{  position:fixed;  bottom:0;  right: 0;  z-index: 1;}
+.tool{  position:fixed;  top:0;  right: 0;  z-index: 1;margin: 8px 8px}
 
-.actions  >#eraser{
+
+.usingstatus > .icon:first-child{  margin-left: 10px;}
+.usingstatus > .icon.active{  height: 2.5em;  width: 2.5em;}
+
+
+.penstyle > .widthStyle{
   display: inline-block;
+  margin: 8px 4px;
+  height: 24px;
+
+  background-color: #000;
 }
-.actions > #pen {
-  display: none;
+.penstyle > .widthStyle.active{
+  height: 16px;
+  box-shadow: 0px -2px 118px 0px rgba(216,30,6,0.9);
 }
-.actions.x > #eraser{
-  display: none;
-}
-.actions.x > #pen{
+
+
+.penstyle > .icon{  
   display: inline-block;
-}*/
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  margin: 8px 8px;
+  position: relative;
+}
 
-.tool{
-  position:fixed;
-  bottom:0;
-  left:0;
-  z-index: 1;
+.penstyle > .icon::before{  
+  content: '';
+  position: absolute;  
+  border-radius: 50%;  
+  height: 14px;  
+  width: 14px;
+  top: 3px;
+  left: 3px;
+  transition: all 0.2s;
+}
+.penstyle > #red::before{background-color: #d81e06;}
+.penstyle > #blue::before{background-color: #13227a;}
+.penstyle > #yellow::before{background-color: #f4ea2a;}
+.penstyle > #black::before{background-color: #000;}
 
-}
-.tool > .icon{
-  height: 2em;
-  width: 2em;
-  margin: 5px 0px;
-  transition: all 0.1s;
-}
-.icon:first-child{
-  margin-left: 10px;
-}
-.icon.active{
-  height: 3em;
-  width: 3em;
-}
+.penstyle >.icon.active{ height: 14px; width: 14px;}
+.penstyle >.icon.active::before{top:0;left:0;}
+
