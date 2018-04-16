@@ -2,24 +2,14 @@
 var context = canvas.getContext('2d');
 
  autoSetSize(canvas)
- listenToMouse(canvas)
+ clearScreen()
+ listenToUser(canvas)
 
 
 /***函数***/
-
-/* 画圆圈
-function drawCircle(x,y,radius){
-  context.beginPath();
-  context.arc(x,y,radius,0,Math.PI*2);
-  context.stroke()
-  context.closePath()
-}
-*/
-
 function drawLine(x1,y1,x2,y2,){
   context.beginPath()
   context.moveTo(x1,y1)
-   //线条粗细
   context.lineTo(x2,y2)
   context.stroke()
   context.closePath()
@@ -38,8 +28,14 @@ function setCanvasSize(aaa){
   aaa.height = newHeight
 }
 
+//设置canvas背景为白色
+function clearScreen(){
+  context.fillStyle = '#fff'
+  context.fillRect(0,0,canvas.width,canvas.height)
+}
 
-function listenToMouse(canvas){
+//使用状态设置
+function listenToUser(canvas){
   var using = false //创建Boolean变量控制使用（绘画/橡皮擦）状态，初始状态是false。
   var usingEraser = false//创建Boolean变量控制橡皮擦状态，初始状态是false。
   var lastPoint = {x:undefined,y:undefined} //创建全局变量，这样函数调用时在这个变量是存在的。
@@ -102,7 +98,18 @@ function listenToMouse(canvas){
     thick.classList.remove('active')
     context.lineWidth = 6
   }
-
+  //工具使用
+  clear.onclick = function(){
+    context.clearRect(0,0,canvas.width,canvas.height)
+  }
+  save.onclick = function(){
+    var url = canvas.toDataURL();
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = 'my picture'
+    a.click()
+  }
    //特性检查
  if(document.body.ontouchstart !== undefined){
     //touchevent 触屏设备
@@ -122,6 +129,7 @@ function listenToMouse(canvas){
         var newPoint = {x:x,y:y}   //局部变量
           if(usingEraser){
             context.strokeStyle = '#fff'
+            context.lineWidth = 8
             drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,)
           }else{
             drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,)
@@ -152,6 +160,8 @@ function listenToMouse(canvas){
           if(usingEraser){
             context.clearRect(x-3,y-3,10,10)
           }else{
+            context.lineWidth = 8
+            context.strokeStyle = '#fff'
             drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
           }
         lastPoint = newPoint
@@ -163,15 +173,3 @@ function listenToMouse(canvas){
   }
 }
 
-//工具使用
-clear.onclick = function(){
-  context.clearRect(0,0,canvas.width,canvas.height)
-}
-save.onclick = function(){
-  var url = canvas.toDataURL(image, png);
-  var a = document.createElement('a')
-  document.body.appendChild(a)
-  a.href = url
-  a.download = 'my picture'
-  a.click()
-}
