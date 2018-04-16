@@ -7,13 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 </head>
 <body >
-<canvas id="canvas">
+  <div class="tool">
+    <svg id= "pen" class="icon" >
+        <use xlink:href="#icon-pencil_tip"></use>
+    </svg>
+    <svg id="eraser" class="icon" >
+        <use xlink:href="#icon-eraser"></use>
+    </svg>
+  </div>
+  <canvas id="canvas">
 
-</canvas>
-<div id="actions" class="actions">
-    <button id="eraser">橡皮擦</button>
-    <button id="pen">画笔</button>
-</div>
+  </canvas>
 <script src="./main.js"></script>
+<script src="//at.alicdn.com/t/font_629891_weca19m76g6kzkt9.js"></script>
 </body>
 </html>

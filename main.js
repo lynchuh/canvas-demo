@@ -15,10 +15,11 @@ function drawCircle(x,y,radius){
 }
 */
 
-function drawLine(x1,y1,x2,y2){
+function drawLine(x1,y1,x2,y2,a){
   context.beginPath()
   context.moveTo(x1,y1)
   context.lineWidth = 6 //线条粗细
+  context.strokeStyle = a
   context.lineTo(x2,y2)
   context.stroke()
   context.closePath()
@@ -37,21 +38,26 @@ function setCanvasSize(aaa){
   aaa.height = newHeight
 }
 
+
+
 function listenToMouse(canvas){
   var using = false //创建Boolean变量控制使用（绘画/橡皮擦）状态，初始状态是false。
   var usingEraser = false//创建Boolean变量控制橡皮擦状态，初始状态是false。
   var lastPoint = {x:undefined,y:undefined} //创建全局变量，这样函数调用时在这个变量是存在的。
   eraser.onclick = function(){
     usingEraser =true
-    actions.className = 'actions x'
+    eraser.classList.add('active')
+    pen.classList.remove('active')
   }
   pen.onclick = function(){
     usingEraser = false
-    actions.className = 'actions'
+    pen.classList.add('active')
+    eraser.classList.remove('active')
   }
   //特性检查
  if(document.body.ontouchstart !== undefined){
     //touchevent 触屏设备
+
     canvas.ontouchstart = function(touchClients){
       using = true
       var x = touchClients.touches['0'].clientX
@@ -91,11 +97,11 @@ function listenToMouse(canvas){
     }
     canvas.onmousemove = function(mouseClients){
       if(using){
-        var x = mouseClients.clientX
+        var x = mouseClients.clientX 
         var y = mouseClients.clientY
         var newPoint = {x:x,y:y}   //局部变量
           if(usingEraser){
-            context.clearRect(x-3,y-3,6,6)
+            context.clearRect(x-3,y-3,10,10)
           }else{
             drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
           }
