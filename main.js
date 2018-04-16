@@ -1,9 +1,8 @@
 ﻿var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
- autoSetSize(canvas)
- clearScreen()
- listenToMouse(canvas)
+autoSetSize(canvas)
+  listenToUser(canvas)
 
 
 /***函数***/
@@ -43,7 +42,7 @@ function clearScreen(){
   context.fillRect(0,0,canvas.width,canvas.height)
 }
 
-function listenToMouse(canvas){
+function listenToUser(canvas){
   var using = false //创建Boolean变量控制使用（绘画/橡皮擦）状态，初始状态是false。
   var usingEraser = false//创建Boolean变量控制橡皮擦状态，初始状态是false。
   var lastPoint = {x:undefined,y:undefined} //创建全局变量，这样函数调用时在这个变量是存在的。
@@ -118,6 +117,7 @@ function listenToMouse(canvas){
     a.download = 'my picture'
     a.click()
   }
+  clearScreen()
    //特性检查
  if(document.body.ontouchstart !== undefined){
     //touchevent 触屏设备
@@ -166,10 +166,8 @@ function listenToMouse(canvas){
         var y = mouseClients.clientY
         var newPoint = {x:x,y:y}   //局部变量
           if(usingEraser){
-            context.clearRect(x-3,y-3,10,10)
+            clearScreen()
           }else{
-            context.lineWidth = 8
-            context.strokeStyle = '#fff'
             drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
           }
         lastPoint = newPoint
