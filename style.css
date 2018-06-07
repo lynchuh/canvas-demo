@@ -15,31 +15,36 @@ background: #fff; position: fixed;top: 0;left: 0;}
 
 .usingstatus > .icon:first-child{  margin-left: 10px;}
 .usingstatus > .icon.active{  height: 2.5em;  width: 2.5em;}
-
-
-.penstyle > .widthStyle{
+.penstyle >.pensize,.penstyle >.pencolor{
+  display: inline-block;
+  /* margin:  16px ; */
+}
+.penstyle >.pensize:active,.penstyle >.pencolor:active{
+  background-color: red;
+}
+.penstyle > .pensize > .widthStyle{
   display: inline-block;
   margin: 8px 4px;
   height: 24px;
-
   background-color: #000;
 }
-.penstyle > .widthStyle.active{
+.penstyle >.pensize > .widthStyle.active{
   height: 16px;
-  box-shadow: 0px -2px 118px 0px rgba(216,30,6,0.9);
 }
 
-
-.penstyle > .icon{  
+.penstyle >.pencolor{
+  margin: 0 12px;
+}
+.penstyle > .pencolor >.colorStyle{  
   display: inline-block;
   border-radius: 50%;
   height: 20px;
   width: 20px;
-  margin: 8px 8px;
+  margin: 8px 4px;
   position: relative;
 }
 
-.penstyle > .icon::before{  
+.penstyle >.pencolor > .colorStyle::before{  
   content: '';
   position: absolute;  
   border-radius: 50%;  
@@ -49,11 +54,11 @@ background: #fff; position: fixed;top: 0;left: 0;}
   left: 3px;
   transition: all 0.2s;
 }
-.penstyle > #red::before{background-color: #d81e06;}
-.penstyle > #blue::before{background-color: #13227a;}
-.penstyle > #yellow::before{background-color: #f4ea2a;}
-.penstyle > #black::before{background-color: #000;}
+.penstyle >.pencolor > #red::before{background-color: #d81e06;}
+.penstyle >.pencolor > #blue::before{background-color: #13227a;}
+.penstyle > .pencolor >#yellow::before{background-color: #f4ea2a;}
+.penstyle >.pencolor > #black::before{background-color: #000;}
 
-.penstyle >.icon.active{ height: 14px; width: 14px;}
-.penstyle >.icon.active::before{top:0;left:0;}
+.penstyle >.pencolor >.colorStyle.active{ height: 14px; width: 14px;}
+.penstyle >.pencolor >.colorStyle.active::before{top:0;left:0;}
 

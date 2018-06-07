@@ -16,13 +16,17 @@
     </svg>
   </div>
   <div class="penstyle">
-      <div id="thick" class="widthStyle" style="width: 6px"></div>
-      <div id="middle" class="widthStyle" style="width:8px"></div>
-      <div id="thin" class="widthStyle" style="width:12px"></div>
-      <div id="red" class="icon red" style="border: 2px solid #d81e06"></div>
-      <div id="blue" class="icon blue" style="border: 2px solid #13227a"></div>
-      <div id="yellow" class="icon yellow" style="border: 2px solid #f4ea2a"></div>
-      <div id="black" class="icon black" style="border: 2px solid #000"></div>
+      <div class="pensize">
+          <div id="thick" class="widthStyle" style="width: 6px"></div>
+          <div id="middle" class="widthStyle" style="width:8px"></div>
+          <div id="thin" class="widthStyle" style="width:12px"></div>
+      </div>
+      <div class="pencolor">
+          <div id="red" class="colorStyle red" style="border: 2px solid #d81e06"></div>
+          <div id="blue" class="colorStyle blue" style="border: 2px solid #13227a"></div>
+          <div id="yellow" class="colorStyle yellow" style="border: 2px solid #f4ea2a"></div>
+          <div id="black" class="colorStyle black" style="border: 2px solid #000"></div>
+      </div>
   </div>
   <div class="tool">
       <svg id="clear" class="icon" >
@@ -36,6 +40,7 @@
   <canvas id="canvas">
 
   </canvas>
+  <script src="./jquery-3.3.1.min.js"></script>
 <script src="./main.js"></script>
 <script src="//at.alicdn.com/t/font_629891_4ffq2sy1uso1dcxr.js"></script>
 </body>
