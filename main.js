@@ -44,30 +44,33 @@
       this.preventScroll()
       this.autoSetSize()
       this.initScreen()
-      this.listenToUser()
+      this.bindEvents()
      },
 
 
 
      
-    listenToUser :function(){
+    bindEvents :function(){
       var lastPoint = {x:undefined,y:undefined}
       console.log(document.body.ontouchstart)
       this.chooseClear()
-
       this.choosePenSize()
       this.choosePenColor()
       this.chooseTool()
-      this.chooseSave()
+      this.chooseSaveInPC()
+      
       //特性检查
       if(document.body.ontouchstart !== undefined){
         //触屏设备
         this.drawInTouchscreen()
       }else{
          //mouuseEvent 非触屏设备 PC
-         this.drawInPC()
+        this.drawInPC()
+         
       }
      }, 
+
+
      drawInPC :function(){
        console.log('我运行了')
       this.view.canvas.onmousedown = (mouseClients)=>{
@@ -179,9 +182,9 @@
       })
      },
 
-    chooseSave :function(){
+    chooseSaveInPC :function(){
       this.view.$save.on('click',()=>{
-        this.url = this.view.canvas.toDataURL()
+        this.url = this.view.canvas.toDataURL("image/png")
         this.linkToSave = document.createElement('a')
         document.body.appendChild(this.linkToSave)
         this.linkToSave.href=this.url
@@ -189,7 +192,7 @@
         this.linkToSave.click()
       })
      },
-
+    
      //初始化屏幕
     initScreen :function(){
       this.view.init().fillStyle = '#fff'
