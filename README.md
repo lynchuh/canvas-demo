@@ -1,4 +1,4 @@
-# canvas-demo
+# canvas-drawing-board
 学习中使用canvas做的一个画板小demo        
 
 
