@@ -1,8 +1,8 @@
 # canvas-drawing-board
-学习中使用canvas做的一个小画板 
+学习中使用canvas做的一个小画板
 
 ## 移动端预览
-<img src="http://pdoyygimo.bkt.clouddn.com/1536055154.png" style="height:60px;width:60px;position:absolute;right:70px;margin-top:-10px">
+<img src="https://github.com/lynchuh/canvas-drawing-board/blob/master/preview.png" style="height:60px;width:60px;position:absolute;right:70px;margin-top:-10px">
 
 ## 实现功能
 
