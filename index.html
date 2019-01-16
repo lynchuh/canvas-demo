@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>我的画板</title>
-  <link rel="stylesheet" href="./style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>我的画板</title>
+	<link rel="icon" type="image/x-icon" href="。/favicon.ico"/>
+	<link rel="stylesheet" href="./style.css">
 </head>
-<body >
-  <div class="usingstatus">
-    <svg id= "pen" class="icon" >
-        <use xlink:href="#icon-pencil_tip"></use>
-    </svg>
-    <svg id="eraser" class="icon" >
-        <use xlink:href="#icon-eraser"></use>
-    </svg>
-  </div>
-  <div class="penstyle">
-      <div class="pensize">
-          <div id="thick" class="widthStyle" style="width: 6px"></div>
-          <div id="middle" class="widthStyle" style="width:8px"></div>
-          <div id="thin" class="widthStyle" style="width:12px"></div>
-      </div>
-      <div class="pencolor">
-          <div id="red" class="colorStyle red" style="border: 2px solid #d81e06"></div>
-          <div id="blue" class="colorStyle blue" style="border: 2px solid #13227a"></div>
-          <div id="yellow" class="colorStyle yellow" style="border: 2px solid #f4ea2a"></div>
-          <div id="black" class="colorStyle black" style="border: 2px solid #000"></div>
-      </div>
-  </div>
-  <div class="tool">
-      <svg id="clear" class="icon" >
-          <use xlink:href="#icon-delete"></use>
-      </svg>
-      <svg id="save" class="icon" >
-          <use xlink:href="#icon-autosave"></use>
-      </svg>
-  </div>
 
-  <canvas id="canvas">
+<body>
+	<div id="usingStatus">
+		<svg class="icon" data-status="draw">
+			<use xlink:href="#icon-pencil_tip"></use>
+		</svg>
+		<svg class="icon" data-status="clear">
+			<use xlink:href="#icon-eraser"></use>
+		</svg>
+	</div>
+	<div class="penstyle">
+		<div id="pensize">
+			<div class="widthStyle" style="width: 6px"></div>
+			<div class="widthStyle" style="width:8px"></div>
+			<div class="widthStyle" style="width:12px"></div>
+		</div>
+		<div id="pencolor">
+			<div class="colorStyle red" data-color="#d81e06"></div>
+			<div class="colorStyle blue" data-color="#13227a"></div>
+			<div class="colorStyle yellow" data-color="#f4ea2a"></div>
+			<div class="colorStyle black" data-color="#000"></div>
+		</div>
+	</div>
+	<div id="tool">
+		<svg id="clear" class="icon">
+			<use xlink:href="#icon-delete"></use>
+		</svg>
+		<svg id="save" class="icon">
+			<use xlink:href="#icon-autosave"></use>
+		</svg>
+	</div>
 
-  </canvas>
-  <script src="./jquery-3.3.1.min.js"></script>
-<script src="./main.js"></script>
-<script src="//at.alicdn.com/t/font_629891_4ffq2sy1uso1dcxr.js"></script>
+	<canvas id="canvas">
+
+	</canvas>
+	<div class="result">
+		<span>长按保存</span>
+		<img id="resultImg" >
+		<button id="closeImg">关闭</button>
+	</div>
+	<script src="./jquery-3.3.1.min.js"></script>
+	<script src="./svg.js"></script>
+	<script src="./main.js"></script>
 </body>
+
 </html>
